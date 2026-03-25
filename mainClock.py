@@ -1,3 +1,4 @@
+import os
 import asyncio
 import sys
 from datetime import datetime
@@ -5,12 +6,13 @@ import pytz
 from telethon import TelegramClient
 from telethon.tl.functions.account import UpdateProfileRequest
 
+# env переменные
+api_id = int(os.getenv("TELEGRAM_API_ID"))
+api_hash = os.getenv("TELEGRAM_API_HASH")
+
 # Windows fix
 if sys.platform.startswith('win'):
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-
-api_id = 1566396
-api_hash = "e011d9796aea5ea661ac0286a35d89ed"
 
 client = TelegramClient("session_name", api_id, api_hash)
 
